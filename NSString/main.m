@@ -10,31 +10,54 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        //Iniciar NSString con alloc para alojamiento de memoria
         NSString * prueba = [[NSString alloc]initWithFormat:@"Mi primer String :D"];
+        
+        //Iniciar NSString con alloc y una variable
         NSString * vPrueba = [[NSString alloc]initWithString:prueba];
         
-        NSLog(@"%lu", (unsigned long)[prueba length]);  //para ver la longitud en caracteres
-        NSLog(@"%@", vPrueba); //para imprimir el NSString como variable
-        NSLog(@"%@", prueba); //para imprimir el NSString
+        //para ver la longitud en caracteres
+        NSLog(@"%lu", (unsigned long)[prueba length]);
         
+        //para imprimir el NSString como variable
+        NSLog(@"%@", vPrueba);
+        
+        //para imprimir el NSString
+        NSLog(@"%@", prueba);
+        
+        //Iniciar NSString sin alloc
         NSString * pprueba = @"hola";
-        
         NSLog(@"%@", pprueba);
         
-        char c = [prueba characterAtIndex:10]; //como el charAt() da el caracter en posición 10
+        //como el charAt() da el caracter en posición 10
+        char c = [prueba characterAtIndex:10];
         NSLog(@"%c", c);
         
-        NSString * pruebaMayusculas = [prueba uppercaseString]; //convierte toda la cadena en mayusculas
+        //convierte toda la cadena en mayusculas
+        NSString * pruebaMayusculas = [prueba uppercaseString];
         NSLog(@"%@", pruebaMayusculas);
         
-        NSString * pruebaMinusculas = [prueba lowercaseString]; //convierte toda la cadena en minusculas
+        //convierte toda la cadena en minusculas
+        NSString * pruebaMinusculas = [prueba lowercaseString];
         NSLog(@"%@", pruebaMinusculas);
         
-        NSString * pruebaPrimerasLetras = [prueba substringToIndex:4]; //muestra las primeras letras hasta el número indicado
+        //muestra las primeras letras hasta el número indicado
+        NSString * pruebaPrimerasLetras = [prueba substringToIndex:4];
         NSLog(@"%@", pruebaPrimerasLetras);
         
-        NSString * pruebaLetrasFinales = [prueba substringFromIndex:4]; //muestra las letras consecutivas al número indicado
+        //muestra las letras consecutivas al número indicado
+        NSString * pruebaLetrasFinales = [prueba substringFromIndex:4];
         NSLog(@"%@", pruebaLetrasFinales);
+        
+        //te da datos de rango ej (no olvidar que es NSRange)
+        //.length = caracteres de la palabra .location = la posición de caracteres desde el inicio hasta que empieza la palabra
+        NSRange pruebaRango = [prueba rangeOfString: @"String"];
+        NSLog(@"La longitud es: %lu y la locación es: %lu", (unsigned long)pruebaRango.length, (unsigned long)pruebaRango.location);
+        
+        //pondrá los caracteres que estén en el rango 5, 10
+        NSString * pruebaRangoSel = [prueba substringWithRange:NSMakeRange(5, 10)];
+        NSLog(@"%@", pruebaRangoSel);
+        
         
     }
     return 0;
